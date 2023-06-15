@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='login')
+def Home(request):
+    return render(request, 'home.html') 
+
 def SignUp(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -48,5 +53,9 @@ def Login(request):
     return render(request, 'login.html')
     # return HttpResponse('hey')
 
-def Home(request):
-    return render(request, 'home.html')    
+
+
+def HandleLogout(request):
+    logout(request)
+    return redirect('login')
+    # return render(request, 'logout.html')  
