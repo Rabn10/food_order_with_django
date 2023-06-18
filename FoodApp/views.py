@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import FoodItem,Category
 
 # Create your views here.
 
@@ -14,7 +15,11 @@ def Home(request):
     return render(request, 'home.html') 
 
 def FullMenu(request):
-    return render(request, 'fullmenu.html')
+    foods=FoodItem.objects.all()
+    categorys=Category.objects.all()
+    for x  in foods:
+        print(x.name)
+    return render(request, 'fullmenu.html',{"foods":foods,"categories":categorys,"title":"Fullmenu"})
 
 def Index(request):
     return render(request, 'index.html') 
