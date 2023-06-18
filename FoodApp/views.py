@@ -13,6 +13,9 @@ from django.contrib.auth.decorators import login_required
 def Home(request):
     return render(request, 'home.html') 
 
+def FullMenu(request):
+    return render(request, 'fullmenu.html')
+
 def Index(request):
     return render(request, 'index.html') 
 
