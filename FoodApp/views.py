@@ -12,8 +12,9 @@ from .models import FoodItem,Category
 
 @login_required(login_url='login')
 def Home(request):
-    return render(request, 'home.html') 
-
+    return render(request, 'home.html')
+ 
+@login_required(login_url='login')
 def FullMenu(request):
     foods=FoodItem.objects.all()
     categorys=Category.objects.all()
