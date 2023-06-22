@@ -1,0 +1,31 @@
+{% extends 'userheaderfooter.html'%}
+{%block content%}
+
+<!-- <section class="review cmt mb-lg" style="width: 100%;">
+    <form action="" method="POST" class="wrapper" >
+        <h3 class="title-xs text-primary">Write your review here</h3>
+        <hr>
+        {%csrf_token%}
+        <input type="textarea" placeholder="write your reviews here" name="review">
+        <button type="submit" class="btn btn-primary"  style="font-family: 'Open Sans', sans-serif;">Write review</button>
+    </form>
+    <br>
+</section> -->
+
+<section class="food-search text-center">
+    <div class="container">
+        
+        <form action="" method="POST">
+            <h3>Write your review here</h3>
+            <input type="search" name="search" placeholder="Write Reviews..." required>
+            <input type="submit" name="submit" value="write reviews" class="btn btn-primary">
+        </form>
+
+    </div>
+</section>
+
+
+
+
+
+{%endblock%}

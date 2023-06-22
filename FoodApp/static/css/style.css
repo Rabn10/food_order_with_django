@@ -63,6 +63,8 @@ h2{
 }
 h3{
     font-size: 1.5rem;
+    color: white;
+    padding-bottom: .5rem;
 }
 .float-container{
     position: relative;

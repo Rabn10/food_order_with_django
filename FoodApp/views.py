@@ -22,6 +22,10 @@ def FullMenu(request):
         print(x.name)
     return render(request, 'fullmenu.html',{"foods":foods,"categories":categorys,"title":"Fullmenu"})
 
+@login_required(login_url='login')
+def Review(request):
+    return render(request, 'reviews.html')
+
 def Index(request):
     return render(request, 'index.html') 
 
