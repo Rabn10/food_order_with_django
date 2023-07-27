@@ -10,5 +10,7 @@ urlpatterns = [
     path('home/',views.Home, name='home'),
     path('fullmenu/',views.FullMenu, name='fullmenu'),
     path('reviews/',views.Review, name='review'),
-    path('logout/',views.HandleLogout, name='logout')
+    path('logout/',views.HandleLogout, name='logout'),
+    path('viewFood/',views.viewFood, name='viewFood')
+
 ]

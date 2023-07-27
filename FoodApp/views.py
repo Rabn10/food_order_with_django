@@ -27,7 +27,10 @@ def Review(request):
     return render(request, 'reviews.html')
 
 def Index(request):
-    return render(request, 'index.html') 
+    return render(request, 'index.html')
+
+def viewFood(request) :
+    return render(request, 'viewFood.html')     
 
 def SignUp(request):
     if request.method == 'POST':
