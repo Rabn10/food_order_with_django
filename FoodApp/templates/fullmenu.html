@@ -34,7 +34,7 @@
                     </p>
                     <br>
 
-                    <a href="{% url 'viewFood' %}" class="btn btn-primary">Order Now</a>
+                    <a href="{% url 'viewFood' food.id  %}" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
             {% endfor %}

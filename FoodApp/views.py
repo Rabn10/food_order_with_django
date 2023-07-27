@@ -29,8 +29,17 @@ def Review(request):
 def Index(request):
     return render(request, 'index.html')
 
-def viewFood(request) :
-    return render(request, 'viewFood.html')     
+def viewFood(request,id1):
+    food=FoodItem.objects.filter(id=id1)
+    placeholder=1
+    for obj in food:
+        idproduct=obj.id
+        c =obj.category
+    rfood = FoodItem.objects.filter(category=c)
+    # if idproduct in cart_quantity.keys():
+    #     placeholder=cart_quantity[idproduct]
+    return render(request,'viewfood.html',{"foods":food,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
+    # return render(request, 'viewFood.html')     
 
 def SignUp(request):
     if request.method == 'POST':
