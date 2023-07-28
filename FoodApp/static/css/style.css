@@ -147,6 +147,10 @@ fieldset{
     border-radius: 15px;
 }
 
+.food-menu-like{
+    display: flex;
+}
+
 .food-menu-img{
     width: 20%;
     float: left;
