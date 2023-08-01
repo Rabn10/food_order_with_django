@@ -9,6 +9,8 @@ from .models import FoodItem,Category
 # Create your views here.
 
 
+cart_quantity=dict()
+
 
 @login_required(login_url='login')
 def Home(request):
@@ -36,9 +38,9 @@ def viewFood(request,id1):
         idproduct=obj.id
         c =obj.category
     rfood = FoodItem.objects.filter(category=c)
-    # if idproduct in cart_quantity.keys():
-    #     placeholder=cart_quantity[idproduct]
-    return render(request,'viewfood.html',{"foods":food,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
+    if idproduct in cart_quantity.keys():
+        placeholder=cart_quantity[idproduct]
+    return render(request,'viewfood.html',{"foods":food,"productsquantity":cart_quantity,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
     # return render(request, 'viewFood.html')     
 
 def SignUp(request):
