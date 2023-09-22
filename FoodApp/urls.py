@@ -11,6 +11,7 @@ urlpatterns = [
     path('fullmenu/',views.FullMenu, name='fullmenu'),
     path('reviews/',views.Review, name='review'),
     path('logout/',views.HandleLogout, name='logout'),
-    path('viewFood/<int:id1>',views.viewFood, name='viewFood')
+    path('viewFood/<int:id1>',views.viewFood, name='viewFood'),
+    path('updatecart/<int:id2>',views.updatecart, name='updatecart')
 
 ]

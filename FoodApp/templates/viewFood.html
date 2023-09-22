@@ -21,7 +21,8 @@
     </div> 
 
     <div>
-        <form action="">
+        <form action="/updatecart/{{product.id}}" onsubmit="return cartitem_validate()" method="POST">
+            {% csrf_token %}
             <label for="quantity">Quantity: </label>
             <input type="number" id="quantity" placeholder="enter quantity" name="quantity">
             <button type="submit" class="btn-primary">Add to cart</button>

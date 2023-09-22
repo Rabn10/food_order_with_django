@@ -10,6 +10,14 @@ from .models import FoodItem,Category
 
 
 cart_quantity=dict()
+cart_price = dict()
+cart_name = dict()
+count = 0
+
+def updatecount():
+    global cart_dict
+    global count
+    count = count+1
 
 
 @login_required(login_url='login')
@@ -27,6 +35,24 @@ def FullMenu(request):
 @login_required(login_url='login')
 def Review(request):
     return render(request, 'reviews.html')
+
+# add to cart code
+def updatecart(request, id2):
+    global cart_price
+    global cart_name
+    global cart_quantity
+    global count
+    updatecount()
+    quantity = request.POST.get('quantity','1')
+    cart_quantity[id2]=quantity
+    p=FoodItem.objects.filter(id=id2)
+    for obj in p:
+        price=obj.price
+        name=obj.name
+        cart_name[id2]=name
+        cart_price[id2]=price
+    messages.success(request,"Item added to cart")
+    return redirect('/viewfood/'+str(id2))
 
 def Index(request):
     return render(request, 'index.html')
@@ -92,3 +118,6 @@ def HandleLogout(request):
     logout(request)
     return redirect('login')
     # return render(request, 'logout.html')  
+
+
+
