@@ -141,6 +141,15 @@ button{
     </div>
     <form method="post">
         <h3>Login Here</h3>
+        <br>
+        {% if messages %}
+            <div class="alert alert-danger">
+                    {% for message in messages %}
+                    <p style="color: #ff512f; background-color: #e5e5e5;">{{ message }}</p>
+                    {% endfor %}
+            </div>
+        {% endif %}
+
         {% csrf_token %} 
         <label for="username">Username</label>
         <input type="text" placeholder="Enter Username" id="username" name="username">

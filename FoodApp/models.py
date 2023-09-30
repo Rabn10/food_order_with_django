@@ -30,7 +30,7 @@ class Customer(models.Model):
     
 
 class tlb_order(models.Model):
-    Customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE, to_field='id')
+    Customer_id = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id')
     order_date = models.DateTimeField()
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     
@@ -40,7 +40,6 @@ class tlb_order(models.Model):
         ('cancelled', 'Cancelled'),
     ]
     order_status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='pending')
-    process_by = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id')
 
 
 class tbl_order_details(models.Model):
@@ -66,7 +65,7 @@ class tbl_rating(models.Model):
     score = models.IntegerField(default=0)
     remarks = models.TextField(max_length=200)
     date_recorded = models.DateField(auto_now=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, to_field='id')
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id')
 
     def _str_(self):
         return self.customer
