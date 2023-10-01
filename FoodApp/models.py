@@ -62,7 +62,7 @@ class tbl_payment(models.Model):
 
 class tbl_rating(models.Model):
     menu = models.ForeignKey(FoodItem, on_delete=models.CASCADE, to_field='id')
-    score = models.IntegerField(default=0)
+    sentiment=models.TextField(max_length=20,default="")
     remarks = models.TextField(max_length=200)
     date_recorded = models.DateField(auto_now=True)
     customer = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id')
