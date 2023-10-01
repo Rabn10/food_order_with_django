@@ -21,20 +21,17 @@
     </div> 
 
     <div>
-        <form action="/updatecart/{{product.id}}" onsubmit="return cartitem_validate()" method="POST">
-            {% csrf_token %}
-            <label for="quantity">Quantity: </label>
-            <input type="number" id="quantity" placeholder="enter quantity" name="quantity">
-            <button type="submit" class="btn-primary">Add to cart</button>
-            {% for food in foods %}
-            <a href="{% url 'writereviews' food.id  %}" class="btn btn-primary">Write Reviews</a>
-            {% endfor %}
+        <form action="" onsubmit="return cartitem_validate()" method="POST">
+            <h3 style="color: black;">Write Reviews</h3>
+            <textarea placeholder="Write Reviews" rows="4" cols="50"></textarea>
+            <br>
+            <input type="submit" value="Submit" class="btn-primary" style="width: 5rem; padding: 8px;">
         </form>
     </div>
     <div class="clearfix"></div>
 
 
-    <h2 class="text-center">You May Also Like</h2>
+    <h2 class="text-center">Reviews</h2>
 
     <div class="food-menu-like">
         

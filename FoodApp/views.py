@@ -36,6 +36,18 @@ def FullMenu(request):
 def Review(request):
     return render(request, 'reviews.html')
 
+@login_required(login_url='login')
+def WriteReview(request, id3):
+    food=FoodItem.objects.filter(id=id3)
+    placeholder=1
+    for obj in food:
+        idproduct=obj.id
+        c =obj.category
+    rfood = FoodItem.objects.filter(category=c)
+    if idproduct in cart_quantity.keys():
+        placeholder=cart_quantity[idproduct]
+    return render(request,'writereviews.html',{"foods":food,"productsquantity":cart_quantity,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
+
 # add to cart code
 def updatecart(request, id2):
     global cart_price

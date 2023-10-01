@@ -12,6 +12,7 @@ urlpatterns = [
     path('reviews/',views.Review, name='review'),
     path('logout/',views.HandleLogout, name='logout'),
     path('viewFood/<int:id1>',views.viewFood, name='viewFood'),
-    path('updatecart/<int:id2>',views.updatecart, name='updatecart')
+    path('updatecart/<int:id2>',views.updatecart, name='updatecart'),
+    path('writereviews/<int:id3>',views.WriteReview, name='writereviews'),
 
 ]
