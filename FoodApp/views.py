@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import FoodItem,Category
+from .models import FoodItem,Category,tbl_rating
 
 # Create your views here.
 
@@ -38,6 +38,14 @@ def Review(request):
 
 @login_required(login_url='login')
 def WriteReview(request, id3):
+    if request.method == "POST":
+        remarks = request.POST.get('remarks')
+        cumstomer_id = request.user.id
+        menu_id = FoodItem.objects.get(id=id3).id
+        newreview = tbl_rating(remarks=remarks, customer_id=cumstomer_id, menu_id=menu_id)
+        newreview.save()
+        # messages.success(request,"review added")
+        # return redirect('writereviews.html')
     food=FoodItem.objects.filter(id=id3)
     placeholder=1
     for obj in food:
@@ -47,6 +55,7 @@ def WriteReview(request, id3):
     if idproduct in cart_quantity.keys():
         placeholder=cart_quantity[idproduct]
     return render(request,'writereviews.html',{"foods":food,"productsquantity":cart_quantity,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
+
 
 # add to cart code
 def updatecart(request, id2):

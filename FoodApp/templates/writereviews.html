@@ -21,9 +21,10 @@
     </div> 
 
     <div>
-        <form action="" onsubmit="return cartitem_validate()" method="POST">
+        <form method="POST">
+            {% csrf_token %}
             <h3 style="color: black;">Write Reviews</h3>
-            <textarea placeholder="Write Reviews" rows="4" cols="50"></textarea>
+            <textarea placeholder="Write Reviews" rows="4" cols="50" name="remarks" id="remarks"></textarea>
             <br>
             <input type="submit" value="Submit" class="btn-primary" style="width: 5rem; padding: 8px;">
         </form>
