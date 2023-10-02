@@ -42,10 +42,13 @@ def WriteReview(request, id3):
         remarks = request.POST.get('remarks')
         cumstomer_id = request.user.id
         menu_id = FoodItem.objects.get(id=id3).id
-        newreview = tbl_rating(remarks=remarks, customer_id=cumstomer_id, menu_id=menu_id)
+        newreview = tbl_rating(remarks=remarks, customer_name_id=cumstomer_id, menu_id=menu_id)
         newreview.save()
         # messages.success(request,"review added")
         # return redirect('writereviews.html')
+    allremarks = tbl_rating.objects.all()
+    
+
     food=FoodItem.objects.filter(id=id3)
     placeholder=1
     for obj in food:
@@ -54,7 +57,8 @@ def WriteReview(request, id3):
     rfood = FoodItem.objects.filter(category=c)
     if idproduct in cart_quantity.keys():
         placeholder=cart_quantity[idproduct]
-    return render(request,'writereviews.html',{"foods":food,"productsquantity":cart_quantity,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
+    return render(request,'writereviews.html',{"reviews": allremarks, "foods":food,"productsquantity":cart_quantity,"placeholder":placeholder,"rfoods":rfood,"title":"viewfood"})
+
 
 
 # add to cart code

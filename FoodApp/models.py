@@ -65,7 +65,9 @@ class tbl_rating(models.Model):
     sentiment=models.TextField(max_length=20,default="")
     remarks = models.TextField(max_length=200)
     date_recorded = models.DateField(auto_now=True)
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id')
+    # customer = models.ForeignKey(User, on_delete=models.CASCADE, to_field='id')
+    customer_name = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def _str_(self):
         return self.customer

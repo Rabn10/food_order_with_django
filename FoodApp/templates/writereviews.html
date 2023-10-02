@@ -34,24 +34,14 @@
 
     <h2 class="text-center">Reviews</h2>
 
-    <div class="food-menu-like">
-        
-        {% for food in rfoods %}
-        <div class="food-menu-img">
-            <img src="{{food.pimage.url}}" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-        </div>
-        <div class="food-menu-desc">
-            <h4>{{food.name}}</h4>
-            <p class="food-price">{{food.price}}</p>
-            <p class="food-detail">
-                {{food.description}}
-            </p>
-            <br>
-
-            <a href="" class="btn btn-primary">Order Now</a>
-        </div>
-        {% endfor %}
+    {%for r in reviews%}
+        <div class="food-menu-like">
+        <p>{{r.customer_name}}: </p>
+        <br>
+        <br>
+        <p>{{r.remarks}}</p>
     </div>
+    {%endfor%}
     <br>
     <br>
 
