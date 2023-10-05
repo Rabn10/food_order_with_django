@@ -81,6 +81,10 @@ fieldset{
     border-radius: 5px;
 }
 
+.tbl-full {
+	width: 100%;
+}
+
 
 /* CSSS for navbar section */
 

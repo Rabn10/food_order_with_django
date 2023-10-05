@@ -34,14 +34,30 @@
 
     <h2 class="text-center">Reviews</h2>
 
-    {%for r in reviews%}
-        <div class="food-menu-like">
+    <!-- {%for r in reviews%} -->
+        <!-- <div class="food-menu-like">
         <p>{{r.customer_name}}: </p>
         <br>
         <br>
         <p>{{r.remarks}}</p>
-    </div>
-    {%endfor%}
+        </div> -->
+    <!-- {%endfor%} -->
+    <table class="tbl-full">
+        <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <Th>Reviews</Th>
+            <Th>Sentiment</Th>
+        </tr>
+        {%for r in reviews%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{r.customer_name}}</td>
+            <td>{{r.remarks}}</td>
+            <td>{{r.sentiment}}</td>
+        </tr>
+        {%endfor%}
+    </table>
     <br>
     <br>
 
