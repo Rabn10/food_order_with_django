@@ -60,7 +60,7 @@ def WriteReview(request, id3):
         newreview.save()
         # messages.success(request,"review added")
         # return redirect('writereviews.html')
-    allremarks = tbl_rating.objects.all()
+    allremarks = tbl_rating.objects.filter(menu_id=id3)
     
 
     food=FoodItem.objects.filter(id=id3)
