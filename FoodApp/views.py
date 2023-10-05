@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import FoodItem,Category,tbl_rating
+from . import naive as s
+
 
 # Create your views here.
 
@@ -38,11 +40,23 @@ def Review(request):
 
 @login_required(login_url='login')
 def WriteReview(request, id3):
+
+    postivecount=0
+    negativecount=0
+    allremarks = tbl_rating.objects.all()
+    total=len(allremarks)
+    for r in allremarks:
+        if r.sentiment == 'positive':
+            postivecount=postivecount+1
+        if r.sentiment=="negative":
+            negativecount==negativecount+1     
+
+
     if request.method == "POST":
         remarks = request.POST.get('remarks')
         cumstomer_id = request.user.id
         menu_id = FoodItem.objects.get(id=id3).id
-        newreview = tbl_rating(remarks=remarks, customer_name_id=cumstomer_id, menu_id=menu_id)
+        newreview = tbl_rating(remarks=remarks, customer_name_id=cumstomer_id, menu_id=menu_id,sentiment=s.prediction(remarks))
         newreview.save()
         # messages.success(request,"review added")
         # return redirect('writereviews.html')
